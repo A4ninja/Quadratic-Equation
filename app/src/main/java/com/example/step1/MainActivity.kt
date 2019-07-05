@@ -6,9 +6,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import android.widget.Toast.*
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Math.sqrt
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +21,10 @@ class MainActivity : AppCompatActivity() {
             val a1 : Float
             val a2 : Float
             Disc = (xarg*xarg - 4*x2arg*freearg)
+            // Check if the text fields are empty (otherwise casting to float results in crash)
+            if (x2arg.toString().isEmpty() || xarg.toString().isEmpty() || freearg.toString().isEmpty()) {
+                Toast.makeText(this@MainActivity, "Поля не могут быть пустыми", Toast.LENGTH_LONG).show()
+            }
             if (Disc < 0) {
                 Toast.makeText(this@MainActivity, "Ошибка, пирожочек", Toast.LENGTH_SHORT).show()
             }else{
